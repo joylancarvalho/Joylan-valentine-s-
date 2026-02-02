@@ -4,103 +4,126 @@
 <meta charset="UTF-8">
 <title>For Avena 💗</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 body{
-  margin:0;
-  height:100vh;
-  background:linear-gradient(135deg,#f7c6e6,#ffd6e8);
-  font-family:'Poppins',sans-serif;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#ffb3d9,#ffd6e8);
+    font-family:'Poppins',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
 }
-.box{
-  background:white;
-  padding:50px;
-  border-radius:30px;
-  text-align:center;
-  max-width:520px;
-  width:90%;
+
+.card{
+    background:white;
+    padding:70px;
+    border-radius:40px;
+    text-align:center;
+    width:90%;
+    max-width:600px;
+    box-shadow:0 25px 50px rgba(0,0,0,0.2);
 }
-h1{color:#c9184a;font-size:2.5em;}
-p{font-size:1.4em;color:#555;}
+
+h1{
+    font-size:3.2em;
+    color:#d6336c;
+}
+
+p{
+    font-size:1.8em;
+    color:#444;
+    line-height:1.8;
+}
+
 button{
-  padding:15px 35px;
-  margin:15px;
-  font-size:1.2em;
-  border:none;
-  border-radius:40px;
-  cursor:pointer;
+    padding:20px 50px;
+    font-size:1.6em;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    margin:20px;
 }
-.yes{background:#ff4d6d;color:white;}
-.no{background:#eee;}
+
+.yes{
+    background:#ff4d6d;
+    color:white;
+}
+
+.no{
+    background:#eee;
+}
+
 .heart{
-  position:absolute;
-  bottom:-50px;
-  font-size:36px;
-  animation:float 6s linear infinite;
+    position:absolute;
+    bottom:-50px;
+    font-size:40px;
+    animation:float 6s linear infinite;
 }
+
 @keyframes float{
-  from{transform:translateY(0);}
-  to{transform:translateY(-120vh);}
+    from{transform:translateY(0);}
+    to{transform:translateY(-120vh);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="box" id="box">
-  <h1>Avena 💗</h1>
-  <p>Will you be my Valentine’s, beboo?? 🥹💗</p>
-  <button class="yes" onclick="askAgain()">YES 💖</button>
-  <button class="no" onclick="askAgain()">NO 😢</button>
+<div class="card" id="card">
+    <h1>Avena 💗</h1>
+    <p>Will you be my Valentine’s, beboo?? 🥹💗</p>
+    <button class="yes" onclick="lockQuestion()">YES 💖</button>
+    <button class="no" onclick="lockQuestion()">NO 😢</button>
 </div>
 
-<audio id="music" preload="auto" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5c6c8a4d9f.mp3" type="audio/mpeg">
+<!-- HAPPY GUITAR MUSIC -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_5a3c1cfa5a.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-const box = document.getElementById("box");
+const card = document.getElementById("card");
 const music = document.getElementById("music");
 
-function askAgain(){
-  box.innerHTML = `
-    <h1>Lock kiya jaye? 😏🔒</h1>
-    <button class="yes" onclick="finalYes()">Hanji 💖</button>
-    <button class="yes" onclick="finalYes()">Hannnnjiiii 💕</button>
-  `;
+function lockQuestion(){
+    card.innerHTML = `
+        <h1>Lock kiya jaye? 😏🔒</h1>
+        <button class="yes" onclick="finalYes()">Hanji 💖</button>
+        <button class="yes" onclick="finalYes()">Hannnnjiiii 💕</button>
+    `;
 }
 
 function finalYes(){
-  music.play();   // ✅ music starts here (user gesture)
+    // 🔑 PLAY MUSIC DIRECTLY ON CLICK (SAFE)
+    music.play();
 
-  box.innerHTML = `
-    <h1>Happy Valentine’s Day Baby 💗</h1>
-    <p>
-      You are the best thing that ever happened to me.<br><br>
-      You make me smile every single day.<br><br>
-      My partner, my friend, my everything in one.<br><br>
-      I love you more than words could ever say 💗😘<br><br>
-      <strong>– Apka novro Joylan..</strong>
-    </p>
-  `;
+    card.innerHTML = `
+        <h1>Happy Valentine’s Day Baby 💗</h1>
+        <p>
+            You are the best thing that ever happened to me.<br><br>
+            You make me smile every single day.<br><br>
+            My partner, my friend, my everything in one.<br><br>
+            I love you more than words could ever say 💗😘<br><br>
+            <strong>– Apka novro Joylan..</strong>
+        </p>
+    `;
 
-  startHearts();
+    startHearts();
 }
 
 function startHearts(){
-  setInterval(()=>{
-    const h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML=Math.random()>0.5?"💗":"❤️";
-    h.style.left=Math.random()*100+"vw";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),7000);
-  },200);
+    setInterval(()=>{
+        const h=document.createElement("div");
+        h.className="heart";
+        h.innerHTML=Math.random()>0.5?"💗":"❤️";
+        h.style.left=Math.random()*100+"vw";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),7000);
+    },180);
 }
 </script>
 
